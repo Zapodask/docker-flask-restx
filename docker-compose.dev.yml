@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  dev-app:
+    container_name: dev-app
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    command: python dev.py
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - ./app/src:/usr/app/src
+    restart: always
+    env_file:
+      - .env
