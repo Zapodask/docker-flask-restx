@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  app:
+    container_name: prod-app
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    command: uwsgi --ini uwsgi.ini --http :${PORT}
+    ports:
+      - ${PORT}:${PORT}
+    restart: always
+    env_file:
+      - .env

@@ -1,0 +1,14 @@
+FROM python:3.10
+
+WORKDIR /usr/app
+
+COPY index.py requirements.txt uwsgi.ini ./
+
+RUN pip install -r requirements.txt \
+    && pip install uwsgi
+
+COPY src/ ./src/
+
+EXPOSE ${PORT}
+
+CMD ["uwsgi", "--ini", "uwsgi.ini", "--http", ":"${PORT}]

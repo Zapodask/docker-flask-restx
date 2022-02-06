@@ -2,10 +2,10 @@ FROM python:3.10
 
 WORKDIR /usr/app
 
-COPY dev.py requirements.txt ./
+COPY index.py requirements.txt ./
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+EXPOSE ${PORT}
 
-CMD ["python", "dev.py"]
+CMD ["python", "index.py"]
