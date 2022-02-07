@@ -1,16 +1,16 @@
 version: "3"
 
 services:
-  app:
-    container_name: dev-app
+  api:
+    container_name: dev-api
     build:
-      context: ./app
+      context: ./api
       dockerfile: Dockerfile.dev
     command: python index.py
     ports:
-      - ${PORT}:${PORT}
+      - 5000:5000
     volumes:
-      - ./app/src:/usr/app/src
+      - ./api/src:/usr/api/src
     restart: always
     environment:
       - STAGE=dev

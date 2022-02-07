@@ -1,11 +1,11 @@
 FROM python:3.10
 
-WORKDIR /usr/app
+WORKDIR /usr/api
 
 COPY index.py requirements.txt ./
 
 RUN pip install -r requirements.txt
 
-EXPOSE ${PORT}
+EXPOSE 5000
 
 CMD ["python", "index.py"]

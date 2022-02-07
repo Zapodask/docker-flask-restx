@@ -1,14 +1,24 @@
 version: "3"
 
 services:
-  app:
-    container_name: prod-app
+  api:
+    container_name: prod-api
     build:
-      context: ./app
+      context: ./api
       dockerfile: Dockerfile.prod
-    command: uwsgi --ini uwsgi.ini --http :${PORT}
+    command: uwsgi --ini uwsgi.ini
     ports:
-      - ${PORT}:${PORT}
+      - 5000:5000
     restart: always
     env_file:
       - .env
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    depends_on:
+    - api
+    ports:
+    - "80:80"
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
