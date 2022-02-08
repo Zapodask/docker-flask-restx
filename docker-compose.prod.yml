@@ -10,6 +10,8 @@ services:
     ports:
       - 5000:5000
     restart: always
+    environment:
+      - STAGE=prod
     env_file:
       - .env
   nginx:
@@ -22,3 +24,20 @@ services:
     - "80:80"
     volumes:
       - ./nginx/:/etc/nginx/conf.d/
+  prod-postgres:
+    container_name: prod-postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - 5432:5432
+    volumes:
+      - ./prod-db/postgres/data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
