@@ -16,6 +16,8 @@ services:
       - STAGE=dev
     env_file:
       - .env
+    networks:
+      - app-network
   dev-postgres:
     container_name: dev-postgres
     image: postgres
