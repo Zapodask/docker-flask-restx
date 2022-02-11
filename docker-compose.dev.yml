@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  api:
+  dev-api:
     container_name: dev-api
     build:
       context: ./api
