@@ -1,5 +1,13 @@
 # Docker flask-restx
 
+## Tecnologias utilizadas
+
+- Flask restx
+- Uwsgi
+- Docker compose
+- Postgres
+- Nginx
+
 ## Instalação
 
 ```bash
@@ -9,7 +17,7 @@ $ python -m venv .venv
 # Ativar ambiente virtual
 $ .venv/Scripts/activate
 
-# Instalar dependencias
+# Instalar dependências
 $ pip install -r api/requirements.txt
 ```
 
